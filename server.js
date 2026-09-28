@@ -83,4 +83,16 @@ app.get("/scan",async(req,res)=>{
  res.json(r.rows);
 });
 
-init().then(()=>app.listen(3000));
+init()
+.then(()=>{
+
+ const PORT = process.env.PORT || 3000;
+
+ app.listen(PORT,()=>{
+   console.log("ODGJ API running on port " + PORT);
+ });
+
+})
+.catch(err=>{
+ console.error("DATABASE ERROR:",err);
+});
